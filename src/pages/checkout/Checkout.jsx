@@ -6,7 +6,7 @@ const BOT_TOKEN = import.meta.env.VITE_BOT_TOKEN;
 const KANALID = "-1002414202491";
 const USERID = "6410330076";
 const Checkout = () => {
-  const { cart } = useStateValue();
+  const { cart,setCart } = useStateValue();
 
   if (!cart.length) {
     return <Navigate replace to={"/cart"} />;
@@ -24,7 +24,7 @@ const Checkout = () => {
     const totalPrice = cart.reduce(
       (sum, item) => sum + item.amount * item.price,
       0
-    );
+    ).brm();
     const productList = cart
       .map(
         (product, index) =>
@@ -48,6 +48,7 @@ const Checkout = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
+      setCart([])
     } catch (error) {
       console.error("Error:", error);
     }

@@ -46,10 +46,10 @@ const Cart = () => {
   useEffect(() => {
     if (promoStatus.success) {
       setCart((prev) =>
-        prev.map((item) => ({ ...item, price: item.price * 0.8 }))
+        prev.map((item) => ({ ...item, price: item.price * .8 }))
       );
     }
-  }, []);
+  }, [promoStatus.success]);
   return (
     <div className="min-h-[80vh] p-4 bg-gray-100">
       <h2 className="text-2xl font-bold mb-6">Savat</h2>
