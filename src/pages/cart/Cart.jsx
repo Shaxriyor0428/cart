@@ -13,6 +13,7 @@ const Cart = () => {
   const { cart, setCart } = useStateValue();
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

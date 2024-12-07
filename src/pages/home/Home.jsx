@@ -3,7 +3,7 @@ import Hero from "../../components/hero/Hero";
 import Products from "../../components/products/Products";
 import axios from "../../api";
 
-const Home = ({ data: props }) => {
+const Home = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ const Home = ({ data: props }) => {
 
   return (
     <div id="home">
-      <Hero data={props} />
       <Products title="Products" data={data?.products} />
     </div>
   );

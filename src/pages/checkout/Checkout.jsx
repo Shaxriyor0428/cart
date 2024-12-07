@@ -28,7 +28,7 @@ const Checkout = () => {
     const productList = cart
       .map(
         (product, index) =>
-          `${index + 1}. ${product.title}\nPrice: $${product.price}\n`
+          `${index + 1}. ${product.title}\nPrice: $${(product.price).brm()}\n`
       )
       .join("\n");
 
