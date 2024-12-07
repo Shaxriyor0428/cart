@@ -38,8 +38,8 @@ const Cart = () => {
     setCart((prev) => prev.filter(({ id }) => id !== prod.id));
   };
 
-  const totalPrice = cart?.reduce(
-    (sum, item) => sum + item.price * item.amount,
+   const totalPrice = cart?.reduce(
+    (sum, item) => sum + (promoStatus.success ? item.price * .8 : item.price) * item.amount,
     0
   );
 
@@ -95,7 +95,7 @@ const Cart = () => {
             <h3 className="text-lg font-semibold mb-4">Buyurtmangiz</h3>
             <p className="text-gray-700">
               Jami summa:
-              {(promoStatus.success ? totalPrice * 0.8 : totalPrice).brm()}
+              {(totalPrice).brm()}
               <span className="font-bold text-green-600"> so'm</span>
             </p>
             <Promocode promoCodeStatus={setPromoStatus} />
