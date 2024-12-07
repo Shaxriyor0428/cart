@@ -38,11 +38,18 @@ const Cart = () => {
     setCart((prev) => prev.filter(({ id }) => id !== prod.id));
   };
 
-   const totalPrice = cart?.reduce(
-    (sum, item) => sum + (promoStatus.success ? item.price * .8 : item.price) * item.amount,
+  const totalPrice = cart?.reduce(
+    (sum, item) => sum + item.price * item.amount,
     0
   );
 
+  useEffect(() => {
+    if (promoStatus.success) {
+      setCart((prev) =>
+        prev.map((item) => ({ ...item, price: item.price * 0.8 }))
+      );
+    }
+  }, []);
   return (
     <div className="min-h-[80vh] p-4 bg-gray-100">
       <h2 className="text-2xl font-bold mb-6">Savat</h2>
@@ -95,7 +102,7 @@ const Cart = () => {
             <h3 className="text-lg font-semibold mb-4">Buyurtmangiz</h3>
             <p className="text-gray-700">
               Jami summa:
-              {(totalPrice).brm()}
+              {totalPrice.brm()}
               <span className="font-bold text-green-600"> so'm</span>
             </p>
             <Promocode promoCodeStatus={setPromoStatus} />
