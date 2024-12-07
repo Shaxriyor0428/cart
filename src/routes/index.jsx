@@ -10,11 +10,11 @@ import Wishes from "../pages/wishes/Wishes";
 import Contact from "../pages/contact";
 import Cart from "../pages/cart/Cart";
 import Checkout from "../pages/checkout/Checkout";
-const Router = ({ data }) => {
+const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home data={data} />} />
+        <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/yordam" element={<Help />} />
         <Route path="/wishes" element={<Wishes />} />

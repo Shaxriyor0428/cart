@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useStateValue } from "../../context";
 import { TiShoppingCart } from "react-icons/ti";
-
+import { toast, Bounce } from "react-toastify";
 const Products = ({ data, title }) => {
   const { setWishlist, wishlist, cart, setCart } = useStateValue();
 
@@ -18,8 +18,19 @@ const Products = ({ data, title }) => {
   const handleAddToCart = (prod) => {
     const index = cart.findIndex((item) => item.id === prod.id);
     if (index < 0) {
-      setCart((prev) => [...prev, {...prod,amount:1}]);
+      setCart((prev) => [...prev, { ...prod, amount: 1 }]);
     }
+    toast.success("Tovar savatga qo'shildi !", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   const productItems = data?.map((product) => (

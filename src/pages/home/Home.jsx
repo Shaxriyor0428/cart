@@ -1,5 +1,4 @@
 import React, { useEffect, useState, memo } from "react";
-import Hero from "../../components/hero/Hero";
 import Products from "../../components/products/Products";
 import axios from "../../api";
 
